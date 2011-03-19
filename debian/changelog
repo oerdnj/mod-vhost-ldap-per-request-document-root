@@ -1,0 +1,163 @@
+mod-vhost-ldap (2.0.7-1) unstable; urgency=low
+
+  [ Ondřej Surý ]
+  * fix various small typos
+
+  [ Anders Kaseorg ]
+  * Revert incorrect “fix” of wildcard search
+  * Spell VhostLDAPWildcard correctly in example configuration
+
+  [ Ondřej Surý ]
+  * Release version 2.0.7
+
+ -- Ondřej Surý <ondrej@debian.org>  Sat, 19 Mar 2011 11:18:38 +0100
+
+mod-vhost-ldap (2.0.6-1) unstable; urgency=low
+
+  * New upstream release
+    + Fix wildcard search (properly escape * -> \\*)
+    + Create new configuration option to disable wildcard search
+    + Fix cgi-bin processing (Courtesy of Anders Kaseorg) (Closes: #589461)
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 17 Mar 2011 16:17:11 +0100
+
+mod-vhost-ldap (2.0.5-1) unstable; urgency=low
+
+  * New upstream release
+    + Thread-safe by making private copy of r->server
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 08 Jul 2010 20:45:01 +0200
+
+mod-vhost-ldap (2.0.4-1) unstable; urgency=low
+
+  * New upstream release.
+    + Remove mutexes as they cause lockups
+    + store DocumentRoot in r->notes in vhost-document-root
+    + set DocumentRoot once more in fixups hook
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 21 Jun 2010 16:56:36 +0200
+
+mod-vhost-ldap (2.0.3-1) unstable; urgency=low
+
+  * New upstream release.
+    + New mutex around ap_document_root unlocked before handler is run,
+      this should handle (most) concurrency issues when used with mpm_worker
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 16 Jun 2010 15:53:39 +0200
+
+mod-vhost-ldap (2.0.2-1) unstable; urgency=low
+
+  * New upstream release
+    + Fix LDAP query injection (courtesy of Anders Kaseorg)
+      (Closes: #469930)
+    + Add support for wildcard hostnames (courtesy of Anders Kaseorg)
+      (Closes: #470085)
+  * Update description (Closes: #499981)
+  * Fix debian/watch file (Closes: #450290)
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 10 Jun 2010 11:10:55 +0200
+
+mod-vhost-ldap (2.0.1-2) unstable; urgency=low
+
+  * Install module into correct directory
+
+ -- Ondřej Surý <ondrej@debian.org>  Thu, 10 Jun 2010 10:30:30 +0200
+
+mod-vhost-ldap (2.0.1-1) unstable; urgency=low
+
+  * New upstream release 2.0.1
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 09 Jun 2010 15:17:47 +0200
+
+mod-vhost-ldap (2.0.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 08 Jun 2010 14:50:20 +0200
+
+mod-vhost-ldap (1.2.0-1) unstable; urgency=low
+
+  * New upstream release (adds apache-2.2 support)
+  * Fix FTBFS with apache-2.2 (Closes: #393021)
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed,  1 Nov 2006 13:25:54 +0100
+
+mod-vhost-ldap (1.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Add support for apache-2.2.x (Courtesy of Bart Vanbrabant)
+
+ -- Ondřej Surý <ondrej@debian.org>  Fri, 21 Apr 2006 10:57:06 +0200
+
+mod-vhost-ldap (1.0.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix small memory leak when used in subrequest (e.g. fastcgi)
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 30 Jan 2006 22:12:05 +0100
+
+mod-vhost-ldap (0.2.9-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ondřej Surý <ondrej@sury.org>  Mon,  3 Oct 2005 16:10:24 +0200
+
+mod-vhost-ldap (0.2.8-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ondřej Surý <ondrej@sury.org>  Thu, 22 Sep 2005 09:26:56 +0200
+
+mod-vhost-ldap (0.2.7-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ondřej Surý <ondrej@sury.org>  Mon, 19 Sep 2005 10:27:13 +0200
+
+mod-vhost-ldap (0.2.6-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ondřej Surý <ondrej@sury.org>  Fri, 16 Sep 2005 10:13:25 +0200
+
+mod-vhost-ldap (0.2.5-1) unstable; urgency=low
+
+  * New upstream release.
+    + Fix crasher.
+
+ -- Ondřej Surý <ondrej@sury.org>  Thu,  8 Sep 2005 20:35:31 +0200
+
+mod-vhost-ldap (0.2.4-1) unstable; urgency=low
+
+  * New upstream release.
+    + Fix VERSION file mishmash (Closes: #323777)
+    + MIN_UID/MIN_GID lowered to 100/100 (Closes: #323830)
+
+ -- Ondřej Surý <ondrej@debian.org>  Mon, 29 Aug 2005 16:51:46 +0200
+
+mod-vhost-ldap (0.2.3-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix off-by-one error in minimum UID/GID (Closes: #323433)
+  * Fix schema (yet again) (Closes: #323437)
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 17 Aug 2005 11:40:55 +0200
+
+mod-vhost-ldap (0.2.2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Fix schema (Closes: #322958, #323002)
+  * Fix invalid behaviour when apacheScriptAlias missing (Closes: #323006)
+  * Set DOCUMENT_ROOT internal variable (Closes: #323007)
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 16 Aug 2005 09:37:12 +0200
+
+mod-vhost-ldap (0.2.1-1) unstable; urgency=low
+
+  * Initial release. (Closes: #321952)
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue,  9 Aug 2005 14:18:38 +0200
+
+Local variables:
+mode: debian-changelog
+End:

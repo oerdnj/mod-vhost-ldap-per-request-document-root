@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_HARDENING=1
+
+srcpkg = $(shell dpkg-parsechangelog | sed -ne 's/Source: *//p')
+srcver = $(shell dpkg-parsechangelog | sed -ne 's/Version: *\(.*:\)\?\(.*\)-[0-9.]*$$/\2/p')
+#{{{ generic rules
+
+../$(srcpkg)_$(srcver).orig.tar.gz:
+	@! git rev-parse --git-dir >/dev/null 2>&1 || pristine-tar checkout $@
+
+check-tarball: ../$(srcpkg)_$(srcver).orig.tar.gz
+
+.PHONY: check-tarball
+
+#}}}
+
+%:
+	dh --with quilt $@
+
+AP2_MAKE_DEFS=top_dir=/usr/share/apache2 \
+	APXS=apxs2 APACHECTL=apachectl2 \
+	LIBTOOL=libtool SH_LIBTOOL=libtool \
+	INCLUDES="-I/usr/include/apache2 -I /usr/include/apr-0"
+
+DEST=$(CURDIR)/debian/libapache2-mod-vhost-ldap
+
+override_dh_auto_configure:
+	# nothing to do
+
+override_dh_auto_make:
+	$(MAKE) $(AP2_MAKE_DEFS)
+
+override_dh_auto_install:
+	mkdir -p $(DEST)/usr/lib/apache2/modules
+	install -m 644 .libs/mod_vhost_ldap.so $(DEST)/usr/lib/apache2/modules
+	mkdir -p $(DEST)/etc/apache2/mods-available
+	install -m 644 debian/vhost_ldap.load $(DEST)/etc/apache2/mods-available
+	install -m 644 debian/vhost_ldap.conf $(DEST)/etc/apache2/mods-available

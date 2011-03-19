@@ -1,0 +1,5 @@
+version=3
+
+http://alioth.debian.org/frs/?group_id=30740 \
+        https://alioth.debian.org/frs/download.php/[0-9]+/mod-vhost-ldap-([\d.]+)\.tar\.gz \
+	debian uupdate

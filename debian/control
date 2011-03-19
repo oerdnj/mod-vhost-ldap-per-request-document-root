@@ -1,0 +1,19 @@
+Source: mod-vhost-ldap
+Section: web
+Priority: optional
+Maintainer: Ondřej Surý <ondrej@debian.org>
+Standards-Version: 3.8.4
+Build-Depends: debhelper (>> 7.0.52~),
+	       quilt (>= 0.46-7~),
+	       apache2-threaded-dev (>= 2.2.3-3)
+
+Package: libapache2-mod-vhost-ldap
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, apache2.2-common
+Description: Apache 2 module for Virtual Hosting from LDAP
+ mod-vhost-ldap is an Apache 2 module for storing and configuring
+ virtual hosts from LDAP.  It supports the DocumentRoot, ScriptAlias,
+ ServerName, ServerAlias, ServerAdmin and SuexecUserGroup directives.
+ .
+ It is built on top of mod_ldap, so it uses its caching capabilities
+ and can be used with a threaded Apache MPM.
