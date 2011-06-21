@@ -1,3 +1,9 @@
+mod-vhost-ldap (2.0.7-1+prd) m-v-l; urgency=low
+
+  * Compile only with apache2 with per request document root patch.
+
+ -- Ondřej Surý <ondrej@debian.org>  Tue, 21 Jun 2011 15:01:48 +0200
+
 mod-vhost-ldap (2.0.7-1) unstable; urgency=low
 
   [ Ondřej Surý ]
